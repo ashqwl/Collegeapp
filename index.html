@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collegeapp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        
+        header p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        main {
+            padding: 20px;
+        }
+        
+        section {
+            margin-bottom: 30px;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #222;
+            color: #fff;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        footer {
+            background-color: #111;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Collegeapp</h1>
+        <p>Calculate your chances and get feedback on your essay!</p>
+    </header>
+    
+    <main>
+        <section id="form-section">
+            <h2>Calculate Your Chances</h2>
+            <form id="college-form">
+                <label for="sat-score">SAT Score:</label>
+                <input type="number" id="sat-score" name="sat-score" required>
+                
+                <label for="gpa">GPA:</label>
+                <input type="number" step="0.01" id="gpa" name="gpa" required>
+                
+                <label for="dream-school">Dream School:</label>
+                <input type="text" id="dream-school" name="dream-school" required>
+                
+                <button type="submit">Calculate Chances</button>
+            </form>
+            <p id="result"></p>
+        </section>
+        
+        <section id="essay-section">
+            <h2>Get Essay Feedback</h2>
+            <textarea id="essay" rows="10" placeholder="Paste your essay here..."></textarea>
+            <button id="feedback-btn">Get Feedback</button>
+            <div id="feedback"></div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Collegeapp. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('college-form');
+            const result = document.getElementById('result');
+            const essayBtn = document.getElementById('feedback-btn');
+            const feedbackDiv = document.getElementById('feedback');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const satScore = parseFloat(document.getElementById('sat-score').value);
+                const gpa = parseFloat(document.getElementById('gpa').value);
+
+                // Placeholder for chance calculation
+                const chance = (satScore / 1600) * 100 * (gpa / 4.0);
+                result.textContent = `Your estimated chance of getting into your dream school is ${chance.toFixed(2)}%.`;
+            });
+
+            essayBtn.addEventListener('click', () => {
+                const essayText = document.getElementById('essay').value;
+
+                // Placeholder for AI feedback
+                feedbackDiv.innerHTML = `<p>Your essay feedback is currently unavailable. Please check back later.</p>`;
+                // Integrate with real AI service for feedback
+            });
+        });
+    </script>
+</body>
+</html>
